@@ -302,39 +302,29 @@ function estimator_calc(old_rate, skip_save){
     document.getElementById('total').innerHTML = total;
 
     document.getElementById('currency_total').innerHTML = document.getElementById('currency_label').innerHTML;
-
 }
 
 /**
  * Called when the page is loaded to override the values that are in place for non-javascript clients.
  */
 function estimator_init() {
-  
     document.getElementById('estimator_form').target = 'form_target';
-
     document.getElementById('add_task_button').style.display = 'inline';
-
     document.getElementById('title_field').style.display = 'none';
     document.getElementById('title_label').style.display = 'inline';
     document.getElementById('title_edit').style.display = '';
-
     document.getElementById('default_rate_field').style.display = 'none';
     document.getElementById('currency_field').style.display = 'none';
     document.getElementById('default_rate_label').style.display = 'inline';
     document.getElementById('default_rate_edit').style.display = '';
     document.getElementById('currency_label').style.display = 'inline';
-
     document.getElementById('form_submit').style.display = 'none';
     document.getElementById('form_link').style.display = '';
-
     document.getElementById('reset_submit').style.display = 'none';
     document.getElementById('reset_link').style.display = '';
 
     estimator_next_row_index = parseInt(document.getElementById('estimator_row_count').value,0);
-
     estimator_calc();
-
-
 }
 
 /**
@@ -549,9 +539,6 @@ function estimator_reset(){
 function estimator_debug(message){
     var x = confirm(message);
     if(!x){
-
         throw "exit";
-
     }
-
 }

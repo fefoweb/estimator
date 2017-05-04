@@ -69,12 +69,10 @@ class Template{
     <head>
         <meta charset=utf-8"/>
         <title>Web Development Project Estimator</title>
-        <link rel="stylesheet" type="text/css" media="screen" href="./estimator.css" />
-		<link rel="stylesheet" type="text/css" media="print" href="./estimator-print.css" />
-
-        <script src="./estimator.js" type="text/javascript"></script>
-
-
+        <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/estimator.css" />
+		<link rel="stylesheet" type="text/css" media="print" href="./assets/css/estimator-print.css" />
+		<link rel="stylesheet" type="text/css" media="print" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+		<script src="./assets/js/estimator.js" type="text/javascript"></script>
     </head>
 
 EOT;
@@ -269,7 +267,6 @@ EOT;
 								<div id="grandTotal">
 									<span id="currency_total">$currency_field</span><span id="total">$total</span>
 								</div>
-
 							</div>
 
 EOT;
@@ -278,8 +275,8 @@ EOT;
 	public function footer($params = array()){foreach($params as $key => $val){$$key = $val;}$output = <<<EOT
 
     </body>
-
-    
+    <script src="./node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
 </html>
 
 EOT;

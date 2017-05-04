@@ -176,10 +176,17 @@ function estimator_format_currency(amount)
  * Iterates through the current Task Rows, reorganizing them and calculating values.
  */
 function estimator_calc(old_rate, skip_save){
- 
-    var element, children, default_rate, total, count, alt, child, id, index, element_qty, element_price, price, qty, subtotal, element_task_field, element_edit, element_delete, element_save, i, estimator_next_row;
+
+    var element,
+        children,
+        default_rate,
+        total, count, alt, child, id, index, element_qty, element_price, price,
+        qty, subtotal, element_task_field, element_edit,
+        element_delete, element_save, i, estimator_next_row, currency;
 
     element = document.getElementById('estimator_tbody');
+
+    currency = document.getElementById('currency_label').innerHTML;
 
     children = element.getElementsByTagName('*');
 
@@ -244,7 +251,9 @@ function estimator_calc(old_rate, skip_save){
 
                 subtotal = estimator_format_currency(subtotal);
 
-                document.getElementById('total_item_' + index).innerHTML = subtotal;
+                document.getElementById('total_item_' + index).innerHTML = ('undefined' !== typeof currency) ?
+                                                                           currency + " " + subtotal :
+                                                                            subtotal;
 
                 element_qty.id = 'qty_item_' + count;
                 element_qty.name = 'qty_item_' + count;

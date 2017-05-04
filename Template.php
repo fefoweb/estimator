@@ -71,12 +71,13 @@ class Template{
         <title>Web Development Project Estimator</title>
         <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/estimator.css" />
 		<link rel="stylesheet" type="text/css" media="print" href="./assets/css/estimator-print.css" />
-		<link rel="stylesheet" type="text/css" media="print" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
 		<script src="./assets/js/estimator.js" type="text/javascript"></script>
     </head>
 
 EOT;
-		return $output;}
+		return $output;
+	}
 	
 	public function form_header($params = array()){foreach($params as $key => $val){$$key = $val;}$output = <<<EOT
 
@@ -163,27 +164,27 @@ EOT;
                                     <td class="operator">&times;</td>
                                     <td><input type="text" class="price_item_field" name="price_item_$count" id="price_item_$count" value="$price_item" size="3" onchange="estimator_calc()"/></td>
                                     <td class="operator">=</td>
-                                    <td class="right" id="total_item_$count">$fee</td>
+                                    <td class="right" id="total_item_$count">$currency $fee</td>
                                 </tr>
 
 EOT;
 		return $output;}
 
-    public function form_table_footer($params = array()){foreach($params as $key => $val){$$key = $val;}$output = <<<EOT
-
+    public function form_table_footer($params = array()){
+        foreach($params as $key => $val){
+            $$key = $val;
+        }
+        $output = <<<EOT
 							</tbody>
-
 						</table>
-						
 						<div class="estimator-footer">
-						
 							<div id="tf_buttons">
 								<span id="add_task_button" style="display:none;">
 									<a href="#" id="add_task_link" onclick="estimator_add_task();return false;">Add a New Task</a>
 								</span>
 								<a href="#" id="reset_link" onclick="estimator_reset();return false;">Reset Form</a>
 							</div>
-							
+						    
 							<div id="grandTotal">
 								<span id="currency_total">$currency_field</span><span id="total">$total</span>
 							</div>
@@ -249,14 +250,19 @@ EOT;
                                     <td class="operator">x</td>
                                     <td>$price_item</td>
                                     <td class="operator">=</td>
-                                    <td class="right" id="total_item_$count">$fee</td>
+                                    <td class="right" id="total_item_$count">$currency $fee</td>
                                 </tr>
 
 
 EOT;
 		return $output;}
 
-    public function estimate_footer($params = array()){foreach($params as $key => $val){$$key = $val;}$output = <<<EOT
+    public function estimate_footer($params = array()){
+        foreach($params as $key => $val){
+            $$key = $val;
+        }
+
+        $output = <<<EOT
 
                                 </tbody>
 

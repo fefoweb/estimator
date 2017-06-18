@@ -164,7 +164,7 @@ EOT;
                                     <td class="operator">&times;</td>
                                     <td><input type="text" class="price_item_field" name="price_item_$count" id="price_item_$count" value="$price_item" size="3" onchange="estimator_calc()"/></td>
                                     <td class="operator">=</td>
-                                    <td class="right" id="total_item_$count">$currency $fee</td>
+                                    <td class="right" id="total_item_$count">$fee</td>
                                 </tr>
 
 EOT;
@@ -174,6 +174,13 @@ EOT;
         foreach($params as $key => $val){
             $$key = $val;
         }
+        $totalStr = '';
+        if(isset($total)){
+            $totalStr = "<span id=\"total\">{$total}</span>";
+        } else {
+            $totalStr = "<span id=\"total\"></span>";
+        }
+
         $output = <<<EOT
 							</tbody>
 						</table>
@@ -184,13 +191,10 @@ EOT;
 								</span>
 								<a href="#" id="reset_link" onclick="estimator_reset();return false;">Reset Form</a>
 							</div>
-						    
 							<div id="grandTotal">
-								<span id="currency_total">$currency_field</span><span id="total">$total</span>
+								<span id="currency_total">$currency_field</span>$totalStr
 							</div>
-							
 						</div>
-
                         <label for="save_changes">Remember Changes: <input type="checkbox" id="save_changes" name="save" value="checked" $save /></label>
                         <input type="submit" id="form_submit" value="View Estimate in Print-Ready Format"/>
                         <a href="#" id="form_link" onclick="estimator_submit();return false;" style="display:none">View Estimate in Print-Ready Format</a>
